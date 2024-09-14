@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Selector</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, blue, red);
+            animation: backgroundAnimation 10s infinite;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(to right, blue, red);
+            }
+            50% {
+                background: linear-gradient(to right, red, yellow);
+            }
+            100% {
+                background: linear-gradient(to right, blue, red);
+            }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 30px;
+            border-radius: 50%;
+            border: 5px solid green;
+            box-shadow: 0 0 15px green;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            width: 200px;
+            margin: 10px;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.3s ease-in-out;
+            display: block;
+            margin: 10px auto;
+        }
+
+        .buttons button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Specific button colors */
+        .button-1 {
+            background-color: rgb(255, 0, 0); /* Red */
+            box-shadow: 0 0 15px rgb(255, 0, 0);
+        }
+
+        .button-2 {
+            background-color: rgb(0, 255, 0); /* Green */
+            box-shadow: 0 0 15px rgb(0, 255, 0);
+        }
+
+        .button-3 {
+            background-color: rgb(0, 0, 255); /* Blue */
+            box-shadow: 0 0 15px rgb(0, 0, 255);
+        }
+
+        .button-4 {
+            background-color: rgb(255, 165, 0); /* Orange */
+            box-shadow: 0 0 15px rgb(255, 165, 0);
+        }
+
+        .button-5 {
+            background-color: rgb(242, 0, 255); /* Pink */
+            box-shadow: 0 0 15px rgb(242, 0, 255);
+        }
+
+        .button-6 {
+            background-color: rgb(255, 0, 153); /* Light Pink */
+            box-shadow: 0 0 15px rgb(255, 0, 153);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="photos/logo.png" alt="Sanam Logo" class="logo">
+        <div class="buttons">
+            <button class="button-1" onclick="navigateToPage()">IN 999</button>
+            <button class="button-2" onclick="navigateToPage()">BIG MUMBAI</button>
+            <button class="button-3" onclick="navigateToPage()">82 LOTTARY</button>
+            <button class="button-4" onclick="navigateToPage()">TIRANGA</button>
+            <button class="button-5" onclick="navigateToPage()">BDG</button>
+            <button class="button-6" onclick="navigateToPage()">51 GAME</button>
+        </div>
+    </div>
+
+    <script>
+        function navigateToPage() {
+            window.location.href = "select.html";
+        }
+    </script>
+</body>
+</html>

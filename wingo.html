@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Period and Result</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, blue, red);
+            animation: backgroundAnimation 10s infinite;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(to right, blue, red);
+            }
+            50% {
+                background: linear-gradient(to right, red, yellow);
+            }
+            100% {
+                background: linear-gradient(to right, blue, red);
+            }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+        }
+
+        .black-box {
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 5px solid red; /* Initial border color */
+            box-shadow: 0 0 15px red; /* Initial glow */
+            animation: borderGlow 5s infinite;
+        }
+
+        @keyframes borderGlow {
+            0% {
+                border-color: red;
+                box-shadow: 0 0 15px red;
+            }
+            33% {
+                border-color: rgb(0, 255, 0);
+                box-shadow: 0 0 15px rgb(0, 255, 0);
+            }
+            66% {
+                border-color: orange;
+                box-shadow: 0 0 15px orange;
+            }
+            100% {
+                border-color: red;
+                box-shadow: 0 0 15px red;
+            }
+        }
+
+        .logo {
+            width: 80px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            border: 5px solid rgb(0, 255, 0);
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        .buttons button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: background-color 0.3s ease-in-out, transform 0.3s;
+        }
+
+        .buttons button:hover {
+            transform: scale(1.1);
+        }
+
+        .predict-button {
+            background-color: rgb(0, 255, 0);
+        }
+
+        .telegram-button {
+            background-color: rgb(255, 0, 0);
+        }
+
+        .period-result {
+            color: white;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        #auto-period {
+            color: rgb(255, 0, 0);
+        }
+
+        #result {
+            color: rgb(72, 255, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="black-box">
+            <img src="photos/logo.png" alt="Sanam" class="logo">
+            <div class="period-result">
+                <span id="auto-period"><strong>API:</strong> </span>
+                <br>
+                <span id="result"><strong>RESULT:</strong> </span>
+            </div>
+            <div class="buttons">
+                <button class="telegram-button" onclick="window.location.href='https://telegram.me/jujutsukaisenaimbot';">TELEGRAM</button>
+                <button class="predict-button" id="predict-button">PREDICT</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let lastPeriod = '';
+            document.querySelector('.predict-button').addEventListener('click', function () {
+                const now = new Date();
+                const totalMinutes = now.getHours() * 60 + now.getMinutes() + 1;
+                const formattedMinutes = String(totalMinutes).padStart(4, '0');
+                const currentDate = now.toISOString().split('T')[0].replace(/-/g, '');
+                const autoPeriod = currentDate + '01' + formattedMinutes;
+
+                if (autoPeriod === lastPeriod) {
+                    alert('Wait for next period');
+                    return;
+                }
+
+                lastPeriod = autoPeriod;
+                document.getElementById('auto-period').textContent = `API: ${autoPeriod}`;
+
+                const result = Math.random() < 0.5 ? 'SMALL' : 'BIG';
+                document.getElementById('result').textContent = `RESULT: ${result}`;
+            });
+        });
+    </script>
+</body>
+
+</html>
